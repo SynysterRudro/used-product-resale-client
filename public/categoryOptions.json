@@ -1,14 +1,80 @@
 [
     {
-        "name": "IOS",
-        "img": "https://i.ibb.co/PGWqMnJ/iphone.jpg"
+        "category_id": "637e8fa54defb1a01a13f011",
+        "category_name": "IOS",
+        "img": "https://i.ibb.co/PGWqMnJ/iphone.jpg",
+        "product_name": "iphone 13",
+        "location": "Sylhet",
+        "original_price": "100000",
+        "resale_prize": "60000",
+        "yearsUsed": "1year",
+        "date": "24 november 2022",
+        "seller_name": "Rudro",
+        "isVerified": "false"
     },
     {
-        "name": "Android",
-        "img": "https://i.ibb.co/6YCzSsC/android.jpg"
+        "category_id": "637e8fa54defb1a01a13f012",
+        "category_name": "Android",
+        "img": "https://i.ibb.co/6YCzSsC/android.jpg",
+        "product_name": "androoo",
+        "location": "Sylhet",
+        "original_price": "100000",
+        "resale_prize": "60000",
+        "yearsUsed": "1year",
+        "date": "24 november 2022",
+        "seller_name": "Rudro",
+        "isVerified": "false"
     },
     {
-        "name": "Featured Phones",
-        "img": "https://i.ibb.co/VBDFKJ1/featured.jpg"
+        "category_id": "637e8fa54defb1a01a13f013",
+        "category_name": "Featured Phones",
+        "img": "https://i.ibb.co/VBDFKJ1/featured.jpg",
+        "product_name": "feature",
+        "location": "Sylhet",
+        "original_price": "100000",
+        "resale_prize": "60000",
+        "yearsUsed": "1year",
+        "date": "24 november 2022",
+        "seller_name": "Rudro",
+        "isVerified": "false"
+    },
+    {
+        "category_id": "637e8fa54defb1a01a13f011",
+        "category_name": "IOS",
+        "img": "https://i.ibb.co/PGWqMnJ/iphone.jpg",
+        "product_name": "iphone 13",
+        "location": "Sylhet",
+        "original_price": "100000",
+        "resale_prize": "60000",
+        "yearsUsed": "1year",
+        "date": "24 november 2022",
+        "seller_name": "Rudro",
+        "isVerified": "false"
+    },
+    {
+        "category_id": "637e8fa54defb1a01a13f012",
+        "category_name": "Android",
+        "img": "https://i.ibb.co/6YCzSsC/android.jpg",
+        "product_name": "androoo",
+        "location": "Sylhet",
+        "original_price": "100000",
+        "resale_prize": "60000",
+        "yearsUsed": "1year",
+        "date": "24 november 2022",
+        "seller_name": "Rudro",
+        "isVerified": "false"
+    },
+    {
+        "category_id": "637e8fa54defb1a01a13f013",
+        "category_name": "Featured Phones",
+        "img": "https://i.ibb.co/VBDFKJ1/featured.jpg",
+        "product_name": "feature",
+        "location": "Sylhet",
+        "original_price": "100000",
+        "resale_prize": "60000",
+        "yearsUsed": "1year",
+        "date": "24 november 2022",
+        "seller_name": "Rudro",
+        "isVerified": "false"
     }
 ]
