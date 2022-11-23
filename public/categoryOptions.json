@@ -1,11 +1,14 @@
 [
     {
-        "name": "IOS"
+        "name": "IOS",
+        "img": "https://i.ibb.co/PGWqMnJ/iphone.jpg"
     },
     {
-        "name": "Android"
+        "name": "Android",
+        "img": "https://i.ibb.co/6YCzSsC/android.jpg"
     },
     {
-        "name": "Featured Phones"
+        "name": "Featured Phones",
+        "img": "https://i.ibb.co/VBDFKJ1/featured.jpg"
     }
 ]
