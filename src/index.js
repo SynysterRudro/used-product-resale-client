@@ -9,6 +9,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import AuthProvider from './Contexts/AuthProvider';
 
 
 // Create a client
@@ -18,11 +19,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   // Provide the client to your App
-  <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </QueryClientProvider>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </QueryClientProvider>
+
+
+  </React.StrictMode>
 
 );
 
