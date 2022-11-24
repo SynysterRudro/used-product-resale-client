@@ -2,6 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Signup = () => {
@@ -64,6 +65,8 @@ const Signup = () => {
                         const user = result.user;
                         // console.log(user);
                         // saveUser(data.name, data.email, data.role, userImage);
+                        // toast.success('user successfully created');
+                        alert('User successfully created');
                         navigate('/');
                     })
                     .catch(err => console.error(err))
