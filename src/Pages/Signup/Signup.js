@@ -13,9 +13,11 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-
     const [signupError, setSignUpError] = useState('');
 
+
+    const imageHostKey = process.env.REACT_APP_imagebb_key;
+    // console.log(imageHostKey);
 
     // handling google sign in 
     const handleGoogle = () => {
@@ -32,15 +34,36 @@ const Signup = () => {
             })
     }
 
+
     const handleEmailRegister = data => {
-        // console.log(data.email);
+        const image = data.img[0];
+
+
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    console.log(imgData.data.url);
+                    saveUser(data.name, data.email, data.role, imgData.data.url);
+                }
+            })
+
+
+
         emailSignUp(data.email, data.password)
             .then((result) => {
                 setSignUpError('');
                 updateName(data.name)
                     .then(() => {
                         const user = result.user;
-                        console.log(user);
+                        // console.log(user);
+                        // saveUser(data.name, data.email, data.role, userImage);
                         navigate('/');
                     })
                     .catch(err => console.error(err))
@@ -48,6 +71,22 @@ const Signup = () => {
             .catch(err => {
                 console.error(err);
                 setSignUpError(err.message);
+            })
+    }
+
+    // user to database 
+    const saveUser = (name, email, role, img) => {
+        const user = { name, email, role, img };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+
             })
     }
 
@@ -68,6 +107,13 @@ const Signup = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
+                            <span className="label-text">User photo</span>
+                        </label>
+                        <input type="file" {...register("img", { required: 'Image is required' })} className="file-input input-bordered w-full max-w-xs" />
+                        {errors.name && <p className='text-red-600'>{errors.name.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
                             <span className="label-text">Email</span>
                         </label>
                         <input type="email" {...register("email", { required: "email is required" })} className="input input-bordered w-full max-w-xs" />
@@ -82,6 +128,13 @@ const Signup = () => {
                             pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'password must be strengthen' }
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-600'>{errors.password.message} </p>}
+                    </div>
+
+                    <div>
+                        <select className="select select-bordered mt-6 w-full max-w-xs " {...register("role", { required: 'role is required' })}>
+                            <option>Buyer</option>
+                            <option>Seller</option>
+                        </select>
                     </div>
 
 
