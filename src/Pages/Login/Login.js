@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -5,7 +6,9 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
 
-    const { emailSignIn } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+
+    const { emailSignIn, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [signInError, setSignInError] = useState('');
@@ -19,6 +22,21 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate('/');
+            })
+            .catch(err => {
+                console.error(err);
+                setSignInError(err.message);
+            })
+    }
+
+    // handling google sign in 
+    const handleGoogle = () => {
+        googleLogin(googleProvider)
+            .then(result => {
+                setSignInError('');
+                navigate('/');
+                const user = result.user;
+                console.log(user);
             })
             .catch(err => {
                 console.error(err);
@@ -58,7 +76,7 @@ const Login = () => {
                 <p>New here? <Link className='text-primary' to='/signup'>Signup</Link> instead</p>
 
                 <div className="divider">OR</div>
-                {/* <button onClick={handleGoogle} className='uppercase btn btn-outline w-full'>Continue with google</button> */}
+                <button onClick={handleGoogle} className='uppercase btn btn-outline w-full'>Continue with google</button>
             </div>
         </div>
     );

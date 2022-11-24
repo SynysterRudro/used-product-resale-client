@@ -1,22 +1,49 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Signup = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { emailSignUp } = useContext(AuthContext);
+    const { emailSignUp, updateName, googleLogin } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const navigate = useNavigate();
+
 
     const [signupError, setSignUpError] = useState('');
+
+
+    // handling google sign in 
+    const handleGoogle = () => {
+        googleLogin(googleProvider)
+            .then(result => {
+                setSignUpError('')
+                navigate('/');
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => {
+                console.error(err);
+                setSignUpError(err.message);
+            })
+    }
 
     const handleEmailRegister = data => {
         // console.log(data.email);
         emailSignUp(data.email, data.password)
             .then((result) => {
                 setSignUpError('');
-                const user = result.user;
-                console.log(user);
+                updateName(data.name)
+                    .then(() => {
+                        const user = result.user;
+                        console.log(user);
+                        navigate('/');
+                    })
+                    .catch(err => console.error(err))
             })
             .catch(err => {
                 console.error(err);
@@ -65,7 +92,7 @@ const Signup = () => {
                 <p>Already have an account? <Link className='text-primary' to='/login'>Login</Link></p>
 
                 <div className="divider">OR</div>
-                {/* <button onClick={handleGoogle} className='uppercase btn btn-outline w-full'>Continue with google</button> */}
+                <button onClick={handleGoogle} className='uppercase btn btn-outline w-full'>Continue with google</button>
             </div>
         </div>
     );

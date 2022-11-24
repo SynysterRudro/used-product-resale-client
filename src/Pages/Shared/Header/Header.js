@@ -6,7 +6,7 @@ const Header = () => {
 
 
     const { user, logOut } = useContext(AuthContext);
-    // console.log(user);
+    // console.log(user?.displayName);
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
