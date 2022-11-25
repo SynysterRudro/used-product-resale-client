@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import Loading from '../Loading/Loading';
 
 const Header = () => {
+
+    const navigate = useNavigate();
 
 
 
@@ -15,11 +17,14 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
         <li><Link to='/addproduct'>Add Product</Link></li>
+        <li><Link to='/myproduct'>My Product</Link></li>
     </>
 
     const handleLogout = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                navigate('/');
+            })
             .catch(err => console.error(err))
     }
 

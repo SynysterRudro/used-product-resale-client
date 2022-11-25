@@ -28,7 +28,7 @@ const AddProduct = () => {
     // user to database 
     const saveProduct = (product_name, img, location, original_price, resale_price, yearsUsed, seller_name, email, condition, mobile_number, description,) => {
         const product = { product_name, img, location, original_price, resale_price, yearsUsed, seller_name, email, condition, mobile_number, description };
-        fetch('http://localhost:5000/addproduct', {
+        fetch('https://used-products-resale-server-two.vercel.app/addproduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

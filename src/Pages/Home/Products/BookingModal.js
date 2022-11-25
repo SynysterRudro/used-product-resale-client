@@ -4,6 +4,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 const BookingModal = ({ bookingProduct }) => {
 
     const { user } = useContext(AuthContext);
+
     const { email } = user;
     const { seller_name, product_name, resale_price } = bookingProduct;
 
