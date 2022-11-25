@@ -1,5 +1,5 @@
 
-const Product = ({ product }) => {
+const Product = ({ product, setBookingProduct }) => {
     const { img, product_name, location, original_price, resale_price, yearsUsed, date, seller_name } = product;
     return (
         <div className='w-1/2 mx-auto mb-16'>
@@ -14,7 +14,11 @@ const Product = ({ product }) => {
                     <p>Years used - {yearsUsed}</p>
                     <p>Published date - {date}</p>
                     <div className="card-actions justify-center">
-                        <button className="btn btn-primary">Book Now</button>
+                        {/* <button className="btn btn-primary">Book Now</button> */}
+                        {/* The button to open modal */}
+                        <label htmlFor="booking-modal"
+                            onClick={() => setBookingProduct(product)}
+                            className="btn btn-primary">Book Now</label>
                     </div>
                 </div>
             </div>
