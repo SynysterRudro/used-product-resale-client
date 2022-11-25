@@ -14,6 +14,7 @@ const SingleProduct = ({ product }) => {
                             <th>Product Image</th>
                             <th>Price</th>
                             <th>Condition</th>
+                            <th>Advertise</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,10 @@ const SingleProduct = ({ product }) => {
                             </td>
                             <td>
                                 {condition}
+                            </td>
+
+                            <td>
+                                <button className='btn btn-primary text-white'>Advertise</button>
                             </td>
 
                         </tr>
