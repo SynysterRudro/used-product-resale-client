@@ -15,8 +15,9 @@ const AuthProvider = ({ children }) => {
 
     const emailSignUp = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password)
     }
+
 
     // sign in with email password 
 
@@ -47,7 +48,7 @@ const AuthProvider = ({ children }) => {
     // updating user 
     // updating profile 
 
-    const updateName = (name) => {
+    const updateName = (name, role) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName: name

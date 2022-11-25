@@ -1,8 +1,11 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import Loading from '../Loading/Loading';
 
 const Header = () => {
+
 
 
     const { user, logOut } = useContext(AuthContext);
@@ -11,6 +14,7 @@ const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
+        <li><Link to='/addproduct'>Add Product</Link></li>
     </>
 
     const handleLogout = () => {
@@ -18,6 +22,8 @@ const Header = () => {
             .then(() => { })
             .catch(err => console.error(err))
     }
+
+
 
     return (
         <div className="navbar bg-base-100">

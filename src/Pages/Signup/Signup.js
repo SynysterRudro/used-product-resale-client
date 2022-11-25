@@ -63,7 +63,7 @@ const Signup = () => {
                 updateName(data.name)
                     .then(() => {
                         const user = result.user;
-                        // console.log(user);
+                        console.log(user);
                         // saveUser(data.name, data.email, data.role, userImage);
                         // toast.success('user successfully created');
                         alert('User successfully created');
